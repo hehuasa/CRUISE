@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './index.less';
 
-export default class Header extends Component {
+export default class Agent extends Component {
   render() {
     return (
       <div>
-        i am header
+        123321
       </div>
     );
   }

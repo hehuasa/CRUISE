@@ -80,8 +80,11 @@ export const getRouterData = (app) => {
     '/homePage/dashboard': {
       component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),
     },
+    '/homePage/myCruise': {
+      component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),
+    },
     '/homePage/agent': {
-      component: dynamicWrapper(app, ['app'], () => import('../routes/HomePage/HomePage.js')),
+      component: dynamicWrapper(app, ['app'], () => import('../routes/Agent/Agent.js')),
     },
     '/homePage/help': {
       component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),

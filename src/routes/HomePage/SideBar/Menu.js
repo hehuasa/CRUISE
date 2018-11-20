@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'dva/router';
+import { NavLink } from 'dva/router';
 import styles from './index.less';
 
 export default class Menu extends Component {
@@ -11,7 +11,7 @@ export default class Menu extends Component {
         <ul className={styles.menu}>
           { lists.map(item => (
             <li key={item.name}>
-              <Link to={`/${item.path}`}>{item.name}</Link>
+              <NavLink to={`/${item.path}`} activeClassName={styles['menu-hover']}>{item.name}</NavLink>
             </li>
 ))}
         </ul>

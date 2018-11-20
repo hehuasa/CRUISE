@@ -23,7 +23,7 @@ function RouterConfig({ history, app }) {
           />
           <Route
             path="/"
-            render={props => <BasicLayout {...props} />}
+            render={props => <BasicLayout {...props} routerData={routerData} />}
             redirectPath="/app"
           />
         </Switch>
