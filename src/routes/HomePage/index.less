@@ -1,0 +1,98 @@
+@import "../../index";
+.warp {
+  margin: 0 auto;
+}
+.header {
+  box-shadow: 0 3px 5px rgba(#000, 20%);
+  background: @white;
+  & .content {
+    position: relative;
+    margin: 0 auto;
+    height: 70px;
+    line-height: 70px;
+    max-width: 1200px;
+    overflow: hidden;
+    &:hover {
+      overflow: visible;
+    }
+  }
+  & img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+  & .logo {
+    position: absolute;
+    left: 50%;
+    width: 99px;
+    height: 33px;
+    transform: translateX(-50%);
+  }
+  & .user {
+    position: relative;
+    float: right;
+    height: 180px;
+    cursor: pointer;
+    & span {
+      transition: all 1s;
+    }
+    & .up {
+      float: right;
+      width: auto;
+      height: auto;
+      visibility: visible;
+    }
+    & .down {
+      float: right;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+    }
+    &:hover {
+      & .up {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+      }
+      & .down {
+        width: auto;
+        height: auto;
+        visibility: visible;
+      }
+      & .menu {
+        opacity: 1;
+      }
+    }
+    & .img {
+      display: inline-block;
+      margin-right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+    & .menu {
+      position: absolute;
+      top: 84px;
+      left: 50%;
+      padding: 12px 0 ;
+      width: 140px;
+      font-size: 18px;
+      line-height: 32px;
+      opacity: 0;
+      transform: translateX(-50%);
+      background: @white;
+      transition: opacity 1s;
+      cursor: pointer;
+      & div:hover {
+        background: @header-hover;
+      }
+      & .first i {
+        margin-right: 12px;
+        margin-left: 14px;
+      }
+      & .second i {
+        margin-right: 14px;
+        margin-left: 16px;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { getRouterData } from '../../common/router';
 import { menuData } from '../../common/menu';
 import Header from './Header';
 import Sidebar from './Sidebar/Sidebar';
+import styles from './index.less';
 
 export default class HomePage extends Component {
   render() {
@@ -23,7 +24,7 @@ export default class HomePage extends Component {
     }
     );
     return (
-      <div>
+      <div className={styles.warp}>
         <Header />
         <div>
           <Sidebar menuData={menuData} />
