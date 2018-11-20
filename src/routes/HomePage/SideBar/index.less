@@ -1,0 +1,25 @@
+@import "../../../index";
+
+@menu-font: #ccc;
+@hover-color: #00b4cf;
+.warp {
+  width: 270px;
+  background: @dark-deep;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  & li {
+    padding-left: 30px;
+    height: 45px;
+    line-height: 45px;
+    list-style: none;
+    cursor: pointer;
+    color: @menu-font;
+    &:hover {
+      color: @hover-color;
+      background: @dark;
+    }
+  }
+}
