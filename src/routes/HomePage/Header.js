@@ -16,8 +16,7 @@ export default class Header extends Component {
             <div className={styles.img}>
               <img src={user} alt="user" />
             </div>
-            <span className={styles.up}><IconFont type="icon-angle-up" /></span>
-            <span className={styles.down}><IconFont type="icon-angle-down" /></span>
+            <i className={styles.arrow} />
             <div className={styles.menu}>
               <div className={styles.first}>
                 <IconFont type="icon-id-card" />

@@ -36,31 +36,17 @@
     & span {
       transition: all 1s;
     }
-    & .up {
-      float: right;
-      width: auto;
-      height: auto;
-      visibility: visible;
-    }
-    & .down {
-      float: right;
-      width: 0;
-      height: 0;
-      visibility: hidden;
-    }
     &:hover {
-      & .up {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-      }
-      & .down {
-        width: auto;
-        height: auto;
-        visibility: visible;
-      }
       & .menu {
         opacity: 1;
+      }
+      & .arrow {
+        &:before {
+          transform: rotate(-45deg) translateY(4px);
+        }
+        &:after {
+          transform: rotate(45deg) translateY(4px);
+        }
       }
     }
     & .img {
@@ -92,6 +78,28 @@
       & .second i {
         margin-right: 14px;
         margin-left: 16px;
+      }
+    }
+    & .arrow {
+      width: 14px;
+      transition: transform .4s @ease-in-out;
+      transform: translateY(-3.5px);
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        width: 9px;
+        height: 1.5px;
+        border-radius: 2px;
+        transition: background .4s @ease-in-out, transform .4s @ease-in-out, top .4s @ease-in-out;
+        vertical-align: middle;
+        background: #9b9b9b;
+      }
+      &:after {
+        transform: rotate(-45deg) translateX(-4.5px);
+      }
+      &:before {
+        transform: rotate(45deg) translateX(4.5px);
       }
     }
   }
