@@ -94,9 +94,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.BannerPlugin('版权所有，翻版必究'),
+    new webpack.BannerPlugin('thoughtWork homework'),
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`, //
     }),
+      new webpack.HotModuleReplacementPlugin(), // hotLoad
   ],
 };

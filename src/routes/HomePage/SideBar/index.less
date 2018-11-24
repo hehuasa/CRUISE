@@ -3,13 +3,16 @@
 @menu-font: #ccc;
 @hover-color: #00b4cf;
 .warp {
+  float: left;
   width: 270px;
+  height: 100%;
   background: @dark-deep;
 }
 
 .menu {
   margin: 0;
-  padding: 0;
+  padding:  30px 0 ;
+  color: @menu-font;
   & li {
     height: 45px;
     line-height: 45px;
@@ -18,7 +21,10 @@
     & a {
       display: block;
       padding-left: 30px;
-      color: @menu-font;
+      & i {
+        margin-right: 16px;
+        font-size: 20px;
+      }
       &:hover {
         color: @hover-color;
         background: @dark;
@@ -29,4 +35,27 @@
 .menu-hover {
   color: @hover-color !important;
   background: @dark;
+}
+.history {
+  margin-bottom: 20px;
+  padding-left: 12px;
+  & .title {
+    font-size: 24px;
+    color: @menu-font;
+  }
+  & .list {
+    padding-left: 12px;
+    font-size: 12px;
+    color: #999;
+    & li {
+      padding-left: 20px;
+      height: 25px;
+      line-height: 25px;
+      letter-spacing: .5px;
+      cursor: pointer;
+      &:hover {
+        color: @hover-color;
+      }
+    }
+  }
 }

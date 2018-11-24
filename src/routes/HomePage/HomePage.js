@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Router } from 'dva/router';
-import { getRouterData } from '../../common/router';
+import { Route, Switch } from 'dva/router';
 import { menuData } from '../../common/menu';
 import Header from './Header';
 import Sidebar from './Sidebar/Sidebar';
@@ -26,7 +25,7 @@ export default class HomePage extends Component {
     return (
       <div className={styles.warp}>
         <Header />
-        <div>
+        <div className={styles.content}>
           <Sidebar menuData={menuData} />
           { routerData ? (
             <Switch>

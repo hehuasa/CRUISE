@@ -1,0 +1,178 @@
+@import "../../../index";
+
+.tabs {
+  width: 100%;
+  text-align: center;
+  & .bar {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    background: @white;
+  }
+  .extra {
+    flex: 1 1 auto;
+    margin-left: 28px;
+    overflow: hidden;
+    & .search {
+      position: relative;
+      float: left;
+      height: 100%;
+      & i {
+        position: absolute;
+        top: 50%;
+        margin: 0 8px;
+        transform: translateY(-50%);
+        font-size: @icon-x;
+        color: @header-hover;
+        cursor: pointer;
+        z-index: 2;
+      }
+      & input {
+        position: absolute;
+        top: 50%;
+        padding-left: 34px;
+        height: 30px;
+        line-height: 30px;
+        transform: translateY(-50%);
+      }
+    }
+    & .btn {
+      float: right;
+      margin-right: 4px;
+      & i {
+        margin-right: 20px;
+        cursor: pointer;
+        font-size: @icon-x;
+        &:hover {
+          color: @blue;
+        }
+      }
+    }
+  }
+  .tabs-nav-container {
+    & > div {
+      float: left;
+      width: 83px;
+      height: 100%;
+      border-right: 1px solid @white-dark;
+      cursor: pointer;
+      &:hover {
+        color: @blue;
+      }
+    }
+      & .active {
+        color: @blue;
+        border-bottom: 3px solid @blue;
+      }
+  }
+  .tabs-content-container {
+    display: flex;
+    width: 100%;
+    transition: margin-left .3s cubic-bezier(.645,.045,.355,1);
+    & > div {
+      transition: opacity .35s;
+      width: 100%;
+      flex-shrink: 0;
+      //background: @white;
+    }
+  }
+}
+.box {
+  display: flex;
+  margin-top: 18px;
+  width: 100%;
+  background: @white;
+  & .logo {
+    margin: 22px;
+    width: 80px;
+    height: 80px;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  & .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 18px 0;
+    & i {
+      font-size: @icon-s;
+    }
+    & .info {
+      overflow: hidden;
+      & i {
+        margin-right: 10px;
+      }
+      & > div {
+        float: left;
+        margin-right: 24px;
+      }
+      & .name > span {
+        color: @blue;
+        font-weight: 600;
+      }
+      & .idle {
+        padding: 0 8px;
+        color: @white;
+        background: @green;
+      }
+      & .building {
+        padding: 0 8px;
+        color: @white;
+        background: @yellow;
+      }
+    }
+  }
+  & .tools {
+    display: flex;
+    padding-right: 19px;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
+    & .left {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+    }
+    & .add {
+      margin-right: 10px;
+      padding: 2px 12px;
+      background: @blue;
+      color: @white;
+      cursor: pointer;
+      & i {
+        font-size: @icon-x;
+        vertical-align: middle;
+      }
+    }
+    & .resources {
+      flex: 1 1 auto;
+      overflow: hidden;
+      & > div {
+        float: left;
+        margin-right: 10px;
+        padding: 0 4px;
+        background: @body-white;
+        & i {
+          margin-left: 8px;
+          color: @dark;
+          vertical-align: middle;
+        }
+      }
+    }
+    & .deny {
+      padding: 0 16px 0 14px;
+      height: 30px;
+      line-height: 30px;
+      color: @white;
+      background: @blue;
+      cursor: pointer;
+      & i {
+        margin-right: 10px;
+      }
+    }
+  }
+}

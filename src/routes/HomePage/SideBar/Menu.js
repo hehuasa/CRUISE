@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'dva/router';
+import IconFont from '../../../components/IconFont';
 import styles from './index.less';
 
 export default class Menu extends Component {
@@ -11,7 +12,7 @@ export default class Menu extends Component {
         <ul className={styles.menu}>
           { lists.map(item => (
             <li key={item.name}>
-              <NavLink to={`/${item.path}`} activeClassName={styles['menu-hover']}>{item.name}</NavLink>
+              <NavLink to={`/${item.path}`} activeClassName={styles['menu-hover']}><IconFont type={item.icon} style={{ fontSize: 24 }} />{item.name}</NavLink>
             </li>
 ))}
         </ul>

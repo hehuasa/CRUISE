@@ -11,7 +11,12 @@
 
 @ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
-body {
+@icon-s: 16px;
+@icon-m: 18px;
+@icon-x: 20px;
+
+html body {
+  height: 100%;
   color: @dark-deep;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -20,6 +25,19 @@ body {
 a {
   text-decoration: none !important;
 }
+input {
+  background: @body-white;
+  border: 1px solid @white-dark;
+  transition: all .35s;
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(24,144,255,.2);
+    border-color: @blue;
+  }
+}
 i {
   display: inline-block;
+}
+#root {
+  height: 100%;
 }

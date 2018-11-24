@@ -7,19 +7,19 @@ const menu = [
     path: 'homePage',
     children: [{
       name: 'DASHBOARD',
-      icon: 'dashboard',
+      icon: 'icon-dashboard',
       path: 'dashboard',
     }, {
       name: 'AGENT',
-      icon: 'dashboard',
+      icon: 'icon-sitemap',
       path: 'agent',
     }, {
       name: 'MY CRUISE',
-      icon: 'dashboard',
+      icon: 'icon-boat',
       path: 'myCruise',
     }, {
       name: 'HELP',
-      icon: 'dashboard',
+      icon: 'icon-life-bouy',
       path: 'help',
     }],
   },

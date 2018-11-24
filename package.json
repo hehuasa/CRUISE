@@ -4,7 +4,7 @@
   "description": "coding by hehuasa",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server  --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "hehuasa",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
@@ -39,6 +40,7 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "postcss-loader": "^3.0.0",
+    "react-hot-loader": "^4.3.12",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "svg-url-loader": "^2.3.2",

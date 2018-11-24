@@ -1,0 +1,85 @@
+@import "../../../index";
+@icon-size: 144px;
+@title-size: 18px;
+@count-size: 48px;
+@cog-color: #ffc328;
+@coffee-color: #bfe396;
+.warp {
+  display: flex;
+  margin: 16px 0;
+  justify-content: space-between;
+  align-items: center;
+  & > div {
+    width: 270px;
+    height: 115px;
+    & i {
+      font-size: @icon-size;
+      opacity: .2;
+    }
+  }
+  & .title {
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    font-size: @title-size;
+    color: @white;
+  }
+  & .count {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    font-size: @count-size;
+    color: @white;
+  }
+  & .building {
+    position: relative;
+    background: @yellow;
+    & .animate {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      & i {
+        animation: rotate 2s linear infinite;
+        color: #ffc328;
+      }
+    }
+  }
+  & .idle {
+    position: relative;
+    background: @green;
+      & i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: @coffee-color;
+      }
+  }
+  & .counting {
+    display: flex;
+    padding: 0 25px;
+    justify-content: space-between;
+    align-items: center;
+    background: @white;
+    & > div {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    & .type {
+      font-size: 12px;
+    }
+    & .num {
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes rotate
+{
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
