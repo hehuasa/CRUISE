@@ -4,13 +4,13 @@ import IconFont from '../../../components/IconFont';
 
 export default class Modal extends PureComponent {
   render() {
-      const {
-          data,
-          handleResourceValue,
-          resourceValue,
-          changePopupShow,
-          handleResourceAdd,
-      } = this.props;
+    const {
+      data,
+      handleResourceValue,
+      resourceValue,
+      changePopupShow,
+      handleResourceAdd,
+    } = this.props;
     return (
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <div className={styles.triangle} />

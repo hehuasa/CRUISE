@@ -49,6 +49,7 @@ export default class HomePage extends Component {
             </Switch>
 ) : null }
         </div>
+        <footer>@Copyright 2017 ThoughtWorks</footer>
       </div>
     );
   }
