@@ -1,8 +1,4 @@
 import React from 'react';
-import App from './App';
-// import { render } from 'react-dom';
-//
-// render(<Greeter />, document.querySelector('#root'));
 import dva from 'dva';
 import '@babel/polyfill';
 // 创建应用

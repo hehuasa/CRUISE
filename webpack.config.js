@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: `${__dirname}/src/index.js`,
+  entry: ['@babel/polyfill', `${__dirname}/src/index.js`],
   output: {
     path: `${__dirname}/dist/`,
     filename: 'index.js',
@@ -98,6 +98,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`, //
     }),
-      new webpack.HotModuleReplacementPlugin(), // hotLoad
+    new webpack.HotModuleReplacementPlugin(), // hotLoad
   ],
 };

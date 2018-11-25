@@ -6,8 +6,17 @@ import Sidebar from './Sidebar/Sidebar';
 import styles from './index.less';
 
 export default class HomePage extends Component {
+    state = {
+      showPopup: false,
+    };
+  changePopupShow = (param) => {
+    this.setState({
+      showPopup: param,
+    });
+  };
   render() {
     const { routerData } = this.props;
+    const { showPopup } = this.state;
     const homePageChildren = menuData.find(value => value.path === 'homePage').children || [];
     const children = homePageChildren.map((item) => {
       const path = `/${item.path}`;
@@ -16,14 +25,21 @@ export default class HomePage extends Component {
         <Route
           key={item.path}
           path={path}
-          component={route.component}
+          render={props => (
+            <route.component
+              {...props}
+              showPopup={showPopup}
+              changePopupShow={this.changePopupShow}
+            />
+)}
+
           exact
         />
       ) : null;
     }
     );
     return (
-      <div className={styles.warp}>
+      <div className={styles.warp} onClick={() => this.setState({ showPopup: false })}>
         <Header />
         <div className={styles.content}>
           <Sidebar menuData={menuData} />

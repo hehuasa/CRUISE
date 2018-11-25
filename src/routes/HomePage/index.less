@@ -4,8 +4,12 @@
   height: 100%;
 }
 .header {
-  box-shadow: 0 3px 5px rgba(#000, 20%);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(0,0,0, .2);
   background: @white;
+  z-index: 2;
   & .content {
     position: relative;
     margin: 0 auto;
@@ -30,8 +34,8 @@
     transform: translateX(-50%);
   }
   & .user {
-    position: relative;
-    float: right;
+    position: absolute;
+    right: 0;
     height: 180px;
     cursor: pointer;
     & span {
@@ -58,7 +62,7 @@
     }
     & .menu {
       position: absolute;
-      top: 84px;
+      top: 69px;
       left: 50%;
       padding: 12px 0 ;
       width: 140px;
@@ -69,6 +73,8 @@
       background: @white;
       transition: opacity 1s;
       cursor: pointer;
+      border: 1px solid @header-hover;
+      box-shadow: 0 3px 5px rgba(0,0,0, .2);
       & div:hover {
         background: @header-hover;
       }
@@ -106,7 +112,7 @@
   }
 }
 .content {
-  margin: 0 auto;
+  margin: 70px auto;
   max-width: 1200px;
   height: 100%;
 }

@@ -25,7 +25,7 @@
         margin: 0 8px;
         transform: translateY(-50%);
         font-size: @icon-x;
-        color: @header-hover;
+        color: @font-light;
         cursor: pointer;
         z-index: 2;
       }
@@ -100,6 +100,7 @@
     margin: 18px 0;
     & i {
       font-size: @icon-s;
+      color: @font-light;
     }
     & .info {
       overflow: hidden;
@@ -109,6 +110,7 @@
       & > div {
         float: left;
         margin-right: 24px;
+        color: @dark-deep;
       }
       & .name > span {
         color: @blue;
@@ -138,14 +140,110 @@
       align-items: center;
     }
     & .add {
+      position: relative;
       margin-right: 10px;
-      padding: 2px 12px;
-      background: @blue;
-      color: @white;
-      cursor: pointer;
-      & i {
-        font-size: @icon-x;
-        vertical-align: middle;
+      & .btn {
+        padding: 2px 12px;
+        background: @blue;
+        color: @white;
+        cursor: pointer;
+        &:hover {
+          background: @blue-deep;
+        }
+        & i {
+          font-size: @icon-x;
+          vertical-align: middle;
+        }
+      }
+      & .modal {
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        color: @dark;
+        background: @white;
+        z-index: 2;
+        transform: translate(-50%, 100%);
+        & .triangle {
+          position: absolute;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-right: 10px solid transparent;
+          border-bottom: 17px solid @blue ;
+          border-left: 10px solid transparent;
+          transform: translateX(-50%);
+          z-index: 2;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 1px;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-right: 10px solid transparent;
+            border-bottom: 17px solid @white ;
+            border-left: 10px solid transparent;
+            transform: translateX(-50%);
+          }
+        }
+        & .modal-content {
+          position: absolute;
+          top: 17px;
+          left: -30px;
+          padding: 12px;
+          width: 570px;
+          height: 160px;
+          border: 1px solid @blue;
+          background: @white;
+          box-shadow: 0 3px 5px rgba(0,0,0, .3);
+          & .title {
+            float: left;
+            color: @dark;
+            opacity: .7;
+          }
+          & .close {
+            float: right;
+            color: @blue;
+            cursor: pointer;
+            &:hover {
+              color: @blue-deep;
+            }
+          }
+            & > input {
+              margin-top: 12px;
+              margin-bottom: 20px;
+              padding-left: 12px;
+              width: 100%;
+              height: 32px;
+              color: @blue;
+              line-height: 32px;
+              border-radius: 4px;
+            }
+          & .add {
+            float: left;
+            padding: 0 12px;
+            height: 27px;
+            line-height: 27px;
+            background: @blue;
+            color: @white;
+            cursor: pointer;
+            &:hover {
+              background: @blue-deep;
+            }
+          }
+          & .cancel {
+            float: left;
+            padding: 0 12px;
+            height: 27px;
+            line-height: 27px;
+            color: @white;
+            background: @dark-deep;
+            cursor: pointer;
+            &:hover {
+              background: @dark;
+            }
+          }
+        }
       }
     }
     & .resources {
@@ -155,11 +253,16 @@
         float: left;
         margin-right: 10px;
         padding: 0 4px;
-        background: @body-white;
+        background: @header-hover;
         & i {
           margin-left: 8px;
           color: @dark;
           vertical-align: middle;
+          cursor: pointer;
+        &:hover {
+          color: @dark-deep;
+          font-weight: 600;
+        };
         }
       }
     }
@@ -170,6 +273,9 @@
       color: @white;
       background: @blue;
       cursor: pointer;
+      &:hover {
+        background: @blue-deep;
+      }
       & i {
         margin-right: 10px;
       }

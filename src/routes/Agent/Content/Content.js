@@ -1,32 +1,87 @@
 import React, { PureComponent } from 'react';
 import IconFont from '../../../components/IconFont';
-import windows from '../../../assets/img/os/windows.png';
-import ubuntu from '../../../assets/img/os/ubuntu.png';
-import debian from '../../../assets/img/os/debin.png';
-import suse from '../../../assets/img/os/suse.png';
-import centos from '../../../assets/img/os/cent_os.png';
+import Box from './Box';
 import styles from './index.less';
-
-const osLogo = { windows, ubuntu, debian, suse, centos };
 
 export default class Content extends PureComponent {
     state = {
       activeIndex: 0, // defaultState
+      addIndex: null,
+      resourceValue: '',
     };
-    handleClick = (index) => {
+    componentWillReceiveProps(nextProps) {
+      const { showPopup } = this.props;
+      if (nextProps.showPopup !== showPopup && !nextProps.showPopup) {
+        this.setState({
+          resourceValue: '',
+          addIndex: null,
+        });
+      }
+    }
+    handleSwitch = (index) => {
       this.setState({
         activeIndex: index,
       });
     };
+    handleAdd = (index, e) => {
+      const { changePopupShow } = this.props;
+      this.setState({
+        addIndex: index,
+      });
+      changePopupShow(true);
+      e.stopPropagation();
+    };
+    handleResourceValue = (e) => {
+      const { value } = e.target;
+      this.setState({
+        resourceValue: value,
+      });
+    };
+    handleResourceAdd = (data) => {
+      const { dispatch } = this.props;
+      const newData = { ...data };
+      const { resources, id } = newData;
+      const { resourceValue } = this.state;
+      const addRes = resourceValue.split(',');
+      for (const item of addRes) {
+        item.replace(/^\s+|\s+$/g, ''); // del the Space of the string(front and end)
+      }
+      resources.push(...addRes);
+      newData.resources = Array.from(new Set(resources)); // de-duplication
+      dispatch({
+        type: 'agent/editAgent',
+        payload: { id, params: newData },
+      }).then(() => {
+        dispatch({
+          type: 'agent/fetch',
+        });
+      });
+    };
+    handleDelRes = (data, resource, e) => {
+      const { dispatch } = this.props;
+      const newData = { ...data };
+      const { resources, id } = newData;
+      const index = resources.findIndex(value => value === resource);
+      resources.splice(index, 1);
+      dispatch({
+        type: 'agent/editAgent',
+        payload: { id, params: newData },
+      }).then(() => {
+        dispatch({
+          type: 'agent/fetch',
+        });
+      });
+      e.stopPropagation();
+    };
     render() {
-      const { data } = this.props;
-      const { activeIndex } = this.state;
+      const { data, showPopup, changePopupShow } = this.props;
+      const { activeIndex, addIndex, resourceValue } = this.state;
       return (
         <div className={styles.tabs}>
           <div className={styles.bar}>
             <div className={styles['tabs-nav-container']}>
               { data.map((item, index) => (
-                <div key={item.type} className={index === activeIndex ? styles.active : ''} onClick={() => this.handleClick(index)}>
+                <div key={item.type} className={index === activeIndex ? styles.active : ''} onClick={() => this.handleSwitch(index)}>
                   {item.name}
                 </div>
                     ))}
@@ -45,48 +100,20 @@ export default class Content extends PureComponent {
           <div className={styles['tabs-content-container']} style={{ marginLeft: `-${100 * activeIndex}%` }}>
             { data.map((item, index) => (
               <div key={item.type} style={{ opacity: activeIndex === index ? 1 : 0, height: activeIndex === index ? 'auto' : 0 }}>
-                { item.data.map(item1 => (
-                  <div className={styles.box} key={Math.random() * new Date().getTime()}>
-                    <div className={styles.logo}>
-                      <img src={osLogo[item1.os]} alt={item1.os} />
-                    </div>
-                    <div className={styles.content}>
-                      <div className={styles.info}>
-                        <div className={styles.name}>
-                          <IconFont type="icon-desktop" />
-                          <span>{item1.name}</span>
-                        </div>
-                        <div className={styles[item1.status]}>{item1.status}</div>
-                        <div>
-                          <IconFont type="icon-info" />
-                          <span>{item1.ip}</span>
-                        </div>
-                        <div>
-                          <IconFont type="icon-folder" />
-                          <span>{item1.location}</span>
-                        </div>
-                      </div>
-                      <div className={styles.tools}>
-                          <div className={styles.left}>
-                              <div className={styles.add}>
-                                  <IconFont type="icon-plus" />
-                              </div>
-                              <div className={styles.resources}>
-                                  {item1.resources.map(value => (
-                                      <div key={Math.random() * new Date().getTime()}>
-                                          <span>{value}</span>
-                                          <IconFont type="icon-trash" />
-                                      </div>
-                                  ))}
-                              </div>
-                          </div>
-                          <div className={styles.deny}>
-                              <IconFont type="icon-trash" />
-                              <span>Deny</span>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
+                { item.data.map((item1, index1) => (
+                  <Box
+                    data={item1}
+                    key={item1.id}
+                    sortIndex={index1}
+                    addIndex={addIndex}
+                    showPopup={showPopup}
+                    handleAdd={this.handleAdd}
+                    handleDelRes={this.handleDelRes}
+                    changePopupShow={changePopupShow}
+                    handleResourceValue={this.handleResourceValue}
+                    handleResourceAdd={this.handleResourceAdd}
+                    resourceValue={resourceValue}
+                  />
 ))}
 
               </div>
