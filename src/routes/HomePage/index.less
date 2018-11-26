@@ -1,7 +1,10 @@
 @import "../../index";
 .warp {
+  display: flex;
   margin: 0 auto;
   height: 100%;
+  vertical-align: middle;
+  flex-direction: column;
 }
 .header {
   position: fixed;
@@ -9,7 +12,7 @@
   width: 100%;
   box-shadow: 0 3px 5px rgba(0,0,0, .2);
   background: @white;
-  z-index: 2;
+  z-index: 3;
   & .content {
     position: relative;
     margin: 0 auto;
@@ -99,7 +102,6 @@
         height: 1.5px;
         border-radius: 2px;
         transition: background .4s @ease-in-out, transform .4s @ease-in-out, top .4s @ease-in-out;
-        vertical-align: middle;
         background: #9b9b9b;
       }
       &:after {
@@ -114,7 +116,7 @@
 .content {
   margin: 70px auto 0;
   max-width: 1200px;
-  height: 120%;
+  flex: 1;
 }
 footer {
   position: fixed;

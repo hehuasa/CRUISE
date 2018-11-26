@@ -1,5 +1,10 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const devMode = process.env.NODE_ENV === 'dev';
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -27,6 +32,10 @@ module.exports = {
         test: /(\.css)$/,
         use: [
           { loader: 'style-loader' },
+          { loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../dist/',
+            } },
           { loader: 'css-loader' },
         ],
       },
@@ -93,11 +102,25 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
   plugins: [
-    new webpack.BannerPlugin('thoughtWork homework'),
+    new webpack.BannerPlugin('thoughtWorks HomeWork'),
     new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`, //
+      template: `${__dirname}/src/index.html`,
     }),
-    new webpack.HotModuleReplacementPlugin(), // hotLoad
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    }),
   ],
 };

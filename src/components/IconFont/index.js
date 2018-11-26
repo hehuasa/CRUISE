@@ -3,9 +3,9 @@ import '../../assets/css/fonts.css';
 
 export default class IconFont extends Component {
   render() {
-    const { type } = this.props;
+    const { type, style } = this.props;
     return (
-      <i className={type} style={{ verticalAlign: 'text-bottom' }} />
+      <i className={type} style={style} />
     );
   }
 }

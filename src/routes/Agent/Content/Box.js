@@ -18,7 +18,7 @@ export default class Box extends PureComponent {
       handleAdd,
       showPopup,
       handleDelRes,
-        changePopupShow,
+      changePopupShow,
       handleResourceValue,
       resourceValue,
       handleResourceAdd,
@@ -51,10 +51,14 @@ export default class Box extends PureComponent {
                   <IconFont type="icon-plus" />
                 </div>
                 { addIndex === sortIndex && showPopup ? (
-                    <Modal data={data} resourceValue={resourceValue} handleResourceValue={handleResourceValue} handleResourceAdd={handleResourceAdd} changePopupShow={changePopupShow} />
+                  <Modal
+                    data={data}
+                    resourceValue={resourceValue}
+                    handleResourceValue={handleResourceValue}
+                    handleResourceAdd={handleResourceAdd}
+                    changePopupShow={changePopupShow}
+                  />
                       ) : null }
-
-
               </div>
               <div className={styles.resources}>
                 {data.resources.map(value => (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'dva/router';
+import { Route } from 'dva/router';
 import { menuData } from '../../common/menu';
 import Header from './Header';
 import Sidebar from './Sidebar/Sidebar';
@@ -9,6 +9,11 @@ export default class HomePage extends Component {
     state = {
       showPopup: false,
     };
+    componentDidMount() {
+      if (this.props.location.pathname === '/') {
+        this.props.history.push('/homePage/agent');
+      }
+    }
   changePopupShow = (param) => {
     this.setState({
       showPopup: param,
@@ -43,11 +48,7 @@ export default class HomePage extends Component {
         <Header />
         <div className={styles.content}>
           <Sidebar menuData={menuData} />
-          { routerData ? (
-            <Switch>
-              { children }
-            </Switch>
-) : null }
+          { children }
         </div>
         <footer>@Copyright 2017 ThoughtWorks</footer>
       </div>

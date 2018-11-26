@@ -1,5 +1,15 @@
 {
   "presets": ["@babel/preset-react", "@babel/env"],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env"
+        ],
+        "react"
+      ]
+    }
+  },
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-transform-runtime",

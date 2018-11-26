@@ -8,6 +8,7 @@ export default class Content extends PureComponent {
       activeIndex: 0, // defaultState
       addIndex: null,
       resourceValue: '',
+      tabsType: 'horizontal',
     };
     componentWillReceiveProps(nextProps) {
       const { showPopup } = this.props;
@@ -38,13 +39,19 @@ export default class Content extends PureComponent {
       });
     };
     handleResourceAdd = (data) => {
-      const { dispatch } = this.props;
+      const { dispatch, changePopupShow } = this.props;
       const newData = { ...data };
       const { resources, id } = newData;
       const { resourceValue } = this.state;
-      const addRes = resourceValue.split(',');
+      let addRes;
+      if (resourceValue.indexOf('，') !== -1) {
+        addRes = resourceValue.split('，');
+      } else {
+        addRes = resourceValue.split(',');
+      }
+
       for (const item of addRes) {
-        item.replace(/^\s+|\s+$/g, ''); // del the Space of the string(front and end)
+        item.replace(/^\s+|\s+$/g, ''); // del the emptySpace of the string(front and end)
       }
       resources.push(...addRes);
       newData.resources = Array.from(new Set(resources)); // de-duplication
@@ -54,6 +61,8 @@ export default class Content extends PureComponent {
       }).then(() => {
         dispatch({
           type: 'agent/fetch',
+        }).then(() => {
+          changePopupShow(false);
         });
       });
     };
@@ -75,7 +84,7 @@ export default class Content extends PureComponent {
     };
     render() {
       const { data, showPopup, changePopupShow } = this.props;
-      const { activeIndex, addIndex, resourceValue } = this.state;
+      const { activeIndex, addIndex, resourceValue, tabsType } = this.state;
       return (
         <div className={styles.tabs}>
           <div className={styles.bar}>
@@ -92,8 +101,8 @@ export default class Content extends PureComponent {
                 <input />
               </div>
               <div className={styles.btn}>
-                <IconFont type="icon-th-card" />
-                <IconFont type="icon-th-list" />
+                <IconFont style={{ color: tabsType === 'vertical' ? '#00b4cf' : '' }} type="icon-th-card" />
+                <IconFont style={{ color: tabsType === 'horizontal' ? '#00b4cf' : '' }} type="icon-th-list" />
               </div>
             </div>
           </div>

@@ -13,6 +13,8 @@ const menu = [
       name: 'AGENT',
       icon: 'icon-sitemap',
       path: 'agent',
+      exact: true,
+      defaultIndex: true,
     }, {
       name: 'MY CRUISE',
       icon: 'icon-boat',

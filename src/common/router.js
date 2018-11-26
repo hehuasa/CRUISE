@@ -34,7 +34,6 @@ const dynamicWrapper = (app, models, component) => {
       });
     };
   }
-  // () => import('module')
   return dynamic({
     app,
     models: () => models.filter(
@@ -72,22 +71,22 @@ function getFlatMenuData(menus) {
 export const getRouterData = (app) => {
   const routerConfig = {
     '/': {
-      component: dynamicWrapper(app, ['app'], () => import('../routes/HomePage/HomePage.js')),
+      component: dynamicWrapper(app, [], () => import('../routes/HomePage/HomePage.js')),
     },
     '/homePage': {
-      component: dynamicWrapper(app, ['app'], () => import('../routes/HomePage/HomePage.js')),
+      component: dynamicWrapper(app, [], () => import('../routes/HomePage/HomePage.js')),
     },
     '/homePage/dashboard': {
-      component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),
+      component: dynamicWrapper(app, [], () => import('../components/Developing/Developing.js')),
     },
     '/homePage/myCruise': {
-      component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),
+      component: dynamicWrapper(app, [], () => import('../components/Developing/Developing.js')),
     },
     '/homePage/agent': {
       component: dynamicWrapper(app, ['agent'], () => import('../routes/Agent/Agent.js')),
     },
     '/homePage/help': {
-      component: dynamicWrapper(app, ['app'], () => import('../components/Developing/Developing.js')),
+      component: dynamicWrapper(app, [], () => import('../components/Developing/Developing.js')),
     },
   };
   const menus = getFlatMenuData(menuData);
